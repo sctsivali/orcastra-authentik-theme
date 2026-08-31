@@ -18,13 +18,39 @@ Footer `Powered by Orcastra` + logo orca kecil, di tengah:
 
 Screenshot lain (crop kartu, register, versi lama) tetap di `docs/images/`.
 
+## Coba di komputer kamu
+
+Mau meniru login Orcastra Account Center di laptop, tanpa domain,
+Cloudflare, atau kartu kredit? Repo ini sudah punya `docker-compose.yml`
++ `env.example`. Clone, isi secret, `docker compose up` — nginx di depan
+Authentik menyuntik theme JS dan menyajikan `/branding/` (tidak perlu
+`apply-orcastra-theme.sh`).
+
+```bash
+git clone https://github.com/sctsivali/orcastra-authentik-theme.git
+cd orcastra-authentik-theme
+cp env.example .env
+echo "PG_PASS=$(openssl rand -base64 36 | tr -d '\n')" >> .env
+echo "AUTHENTIK_SECRET_KEY=$(openssl rand -base64 60 | tr -d '\n')" >> .env
+docker compose pull && docker compose up -d
+```
+
+Lalu buka http://localhost:9000/if/flow/initial-setup/ untuk admin
+pertama, dan tempel Brand lewat UI. Panduan lengkap (Bahasa Indonesia,
+langkah demi langkah): [docs/00-docker-lokal.md](docs/00-docker-lokal.md).
+
 ## Isi paket
 
 | Path | Isi |
 | --- | --- |
+| `docker-compose.yml` | Stack laptop: Postgres 16 + Authentik 2026.2.1 + worker + nginx |
+| `env.example` | Template `.env` (secret kosong). Salin: `cp env.example .env` |
+| `nginx/docker-default.conf` | Conf nginx laptop (THEME_VERSION=73, siap bind-mount) |
+| `docs/00-docker-lokal.md` | Panduan nubi: clone → compose → Brand UI |
 | `assets/brand.css` | CSS produksi terbaru (juga disalin ke `assets/branding/brand.css`) |
 | `assets/branding/` | JS tema, logo, favicon, background, Lottie, CSS lama (referensi) |
-| `nginx/nginx-branding.conf` | Drop-in nginx: `/branding/` + suntik theme JS (`THEME_VERSION`) |
+| `nginx/nginx-branding.conf` | Drop-in nginx produksi: `/branding/` + suntik theme JS (`THEME_VERSION`) |
+| `scripts/gen-env.sh` | Buat `.env` dari `env.example` + openssl (tidak menimpa) |
 | `scripts/apply-orcastra-theme.sh` | Pasang aset + nginx, idempotent |
 | `scripts/apply-brand-settings.md` | Set Brand/Tenant lewat UI atau `ak` shell |
 | `assets/email/` | Template reset password light-mode (Inter, tanpa secret) |
@@ -91,6 +117,7 @@ Detail: [docs/02-branding.md](docs/02-branding.md).
 
 ## Dokumentasi
 
+0. [Coba di komputer kamu (Docker lokal)](docs/00-docker-lokal.md)
 1. [Prasyarat & topologi](docs/01-prerequisites.md)
 2. [Branding & theme JS](docs/02-branding.md)
 3. [Google OAuth](docs/03-google-oauth.md)

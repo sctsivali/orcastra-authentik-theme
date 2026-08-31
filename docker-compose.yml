@@ -1,0 +1,91 @@
+# Laptop / local Orcastra Authentik stack (Authentik 2026.2.x).
+#
+# Shape follows official 2026.2 compose (postgres + server + worker, no Redis)
+# plus nginx in front so branding and theme JS injection work.
+# Do NOT publish server 9000/9443 — only nginx is published, otherwise you
+# skip branding and see stock authentik.
+#
+# Default image pin: ghcr.io/goauthentik/server:2026.2.1 (theme JS is written
+# for 2026.2.x light-DOM ak-brand-links). Bump AUTHENTIK_TAG in .env later if
+# you need a newer 2026.2.x patch.
+#
+# Copy env.example to .env and fill secrets before `docker compose up`.
+# Never commit .env.
+
+services:
+  postgresql:
+    image: docker.io/library/postgres:16-alpine
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${PG_DB:-authentik}
+      POSTGRES_USER: ${PG_USER:-authentik}
+      POSTGRES_PASSWORD: ${PG_PASS:?database password required}
+    volumes:
+      - database:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      start_period: 20s
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
+  server:
+    image: ${AUTHENTIK_IMAGE:-ghcr.io/goauthentik/server}:${AUTHENTIK_TAG:-2026.2.1}
+    restart: unless-stopped
+    command: server
+    env_file:
+      - .env
+    environment:
+      AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY:?secret key required}
+      AUTHENTIK_ERROR_REPORTING__ENABLED: ${AUTHENTIK_ERROR_REPORTING__ENABLED:-false}
+      AUTHENTIK_POSTGRESQL__HOST: postgresql
+      AUTHENTIK_POSTGRESQL__USER: ${PG_USER:-authentik}
+      AUTHENTIK_POSTGRESQL__NAME: ${PG_DB:-authentik}
+      AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
+    volumes:
+      - ./data:/data
+      - ./custom-templates:/templates
+    shm_size: 512mb
+    depends_on:
+      postgresql:
+        condition: service_healthy
+    # No host ports. Reach Authentik only through nginx (branding + JS inject).
+
+  worker:
+    image: ${AUTHENTIK_IMAGE:-ghcr.io/goauthentik/server}:${AUTHENTIK_TAG:-2026.2.1}
+    restart: unless-stopped
+    command: worker
+    env_file:
+      - .env
+    environment:
+      AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY:?secret key required}
+      AUTHENTIK_ERROR_REPORTING__ENABLED: ${AUTHENTIK_ERROR_REPORTING__ENABLED:-false}
+      AUTHENTIK_POSTGRESQL__HOST: postgresql
+      AUTHENTIK_POSTGRESQL__USER: ${PG_USER:-authentik}
+      AUTHENTIK_POSTGRESQL__NAME: ${PG_DB:-authentik}
+      AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
+    volumes:
+      - ./data:/data
+      - ./custom-templates:/templates
+    shm_size: 512mb
+    depends_on:
+      postgresql:
+        condition: service_healthy
+    # No /var/run/docker.sock — outposts are not needed on this laptop pack.
+
+  nginx:
+    image: docker.io/library/nginx:1.27-alpine
+    restart: unless-stopped
+    ports:
+      - "${COMPOSE_PORT_HTTP:-9000}:80"
+    volumes:
+      - ./nginx/docker-default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./assets/branding:/usr/share/nginx/html/branding:ro
+    depends_on:
+      - server
+
+volumes:
+  database:
+    driver: local

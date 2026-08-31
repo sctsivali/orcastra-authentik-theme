@@ -3,3 +3,5 @@
 *.pem
 .DS_Store
 __pycache__/
+data/
+custom-templates/
