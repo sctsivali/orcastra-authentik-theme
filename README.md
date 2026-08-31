@@ -6,6 +6,18 @@ Authentik 2026.2.x stok, di belakang nginx reverse proxy.
 Tidak ada rahasia di repositori ini: tidak ada `.env`, token, client
 secret OAuth, kunci rahasia Turnstile, atau kata sandi SMTP.
 
+## Preview
+
+Login produksi di [sso.orcastra.io](https://sso.orcastra.io):
+
+![Login Orcastra Account Center](docs/images/preview-login.png)
+
+Footer `Powered by Orcastra` + logo orca kecil, di tengah:
+
+![Footer Powered by Orcastra](docs/images/preview-footer.png)
+
+Screenshot lain (crop kartu, register, versi lama) tetap di `docs/images/`.
+
 ## Isi paket
 
 | Path | Isi |

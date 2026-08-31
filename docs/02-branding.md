@@ -139,8 +139,12 @@ Orcastra.
 
 ## Screenshot referensi
 
-![Login Orcastra](images/authentik_login_orcastra.png)
+Login produksi (Turnstile + GitHub/Google + footer Orcastra):
 
-![Footer Powered by Orcastra](images/orcastra-login-footer-full.png)
+![Login Orcastra Account Center](images/preview-login.png)
+
+![Footer Powered by Orcastra](images/preview-footer.png)
+
+Screenshot lama tetap di folder ini (`authentik_login_orcastra.png`, `orcastra-login-footer-full.png`).
 
 Lanjut: [03-google-oauth.md](03-google-oauth.md).
