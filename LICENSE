@@ -1,0 +1,47 @@
+Orcastra Authentik Theme Pack
+Copyright (c) 2026 Orcastra
+
+This pack contains two classes of material.
+
+1) Scripts, documentation, CSS, and theme JavaScript
+   (scripts/, docs/*.md, README.md, nginx/, assets/brand.css,
+   assets/branding/brand.css, assets/branding/orcastra-theme.js,
+   assets/branding/orcastra-prod.css, assets/email/)
+   are licensed under the MIT License (text below).
+
+2) Orcastra brand assets — logos, favicon, background photograph,
+   Lottie artwork, and screenshots
+   (assets/branding/orca-logo*.png, favicon.ico,
+   bg_orcastra-scaled-1.jpg, orcastra-loader.json, docs/images/)
+   are All Rights Reserved. The Orcastra name, orca mark, and related
+   artwork may not be reused as a trademark or to imply affiliation
+   without permission from Orcastra.
+
+Third-party:
+  assets/branding/lottie_light.min.js is Lottie Web (lottie-web),
+  MIT License, originally by Airbnb / Hernan Torrisi.
+  https://github.com/airbnb/lottie-web
+
+UNLICENSED note: if you fork this pack for a different product, replace
+the brand assets and do not ship Orcastra marks under MIT.
+
+------------------------------------------------------------------------
+MIT License (scripts, docs, CSS, theme JS, email templates)
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.

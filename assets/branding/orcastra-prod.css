@@ -1,0 +1,670 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --orc-bg: hsl(240 10% 3.9%);
+  --orc-fg: hsl(0 0% 98%);
+  --orc-card: hsl(240 10% 3.9%);
+  --orc-muted: hsl(240 5% 64.9%);
+  --orc-border: hsl(240 3.7% 15.9%);
+  --orc-input: hsl(240 3.7% 15.9%);
+  --orc-primary: hsl(263.4 70% 50.4%);
+  --orc-primary-fg: hsl(0 0% 100%);
+  --orc-ring: hsl(263.4 70% 50.4%);
+  --orc-radius: 0.75rem;
+  --orc-font: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --ak-accent: #7c3aed;
+  --ak-global--background-image: url("https://sso.orcastra.io/branding/bg_orcastra-scaled-1.jpg");
+  --pf-global--primary-color--100: #7c3aed;
+  --pf-global--primary-color--200: #6d28d9;
+  --pf-v5-global--primary-color--100: #7c3aed;
+  --pf-v5-global--primary-color--200: #6d28d9;
+  --pf-v5-c-button--m-primary--BackgroundColor: hsl(263.4 70% 50.4%);
+  --pf-v5-c-button--m-primary--hover--BackgroundColor: hsl(263.4 70% 42%);
+}
+
+.pf-c-login,
+.pf-v5-c-login {
+  font-family: var(--orc-font) !important;
+  --ak-c-login--MaxWidth: 26rem;
+  --ak-c-login__main-ColumnWidth: minmax(0, 26rem);
+  grid-template-columns: 1fr [main] minmax(0, 26rem) 1fr !important;
+  grid-template-rows: [header] auto [main] 1fr [footer] auto !important;
+}
+
+/* Match dashboard auth card: bg-card, rounded-2xl, shadow-xl, border */
+.pf-c-login__main,
+.pf-v5-c-login__main {
+  background: hsl(240 10% 6%) !important;
+  color: var(--orc-fg) !important;
+  border: 1px solid var(--orc-border) !important;
+  border-radius: 1rem !important; /* rounded-2xl */
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.4) !important;
+  max-width: 26rem !important;
+  width: 100% !important;
+  justify-self: center !important;
+  align-self: center !important;
+  padding: 2.5rem 2rem !important;
+  backdrop-filter: none;
+}
+
+.pf-c-login__main-header,
+.pf-v5-c-login__main-header {
+  text-align: center;
+  padding: 0 0 0.5rem !important;
+  background: transparent !important;
+}
+
+.pf-c-login__main-header.pf-c-brand,
+.pf-c-brand {
+  justify-content: center !important;
+  display: flex !important;
+}
+
+.branding-logo {
+  max-height: 56px !important;
+  width: auto !important;
+  border-radius: 0.75rem !important;
+  margin: 0 auto 0.75rem;
+}
+
+.pf-c-login__main .pf-c-title,
+.pf-c-login__main h1,
+.pf-c-login__main [data-test-id="card-title"] {
+  font-family: var(--orc-font) !important;
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
+  color: var(--orc-fg) !important;
+  letter-spacing: -0.025em;
+  text-align: center;
+}
+
+.pf-c-login__main-body,
+.pf-v5-c-login__main-body {
+  padding: 0.5rem 0 0 !important;
+  background: transparent !important;
+}
+
+.pf-c-login__main .pf-c-form__label,
+.pf-c-login__main label {
+  font-family: var(--orc-font) !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: var(--orc-fg) !important;
+}
+
+.pf-c-login__main .pf-c-form-control,
+.pf-c-login__main input[type="text"],
+.pf-c-login__main input[type="password"],
+.pf-c-login__main input[type="email"] {
+  font-family: var(--orc-font) !important;
+  background: var(--orc-input) !important;
+  color: var(--orc-fg) !important;
+  border: 1px solid var(--orc-border) !important;
+  border-radius: calc(var(--orc-radius) - 2px) !important; /* rounded-md */
+  box-shadow: none !important;
+  min-height: 2.5rem !important;
+  padding: 0.5rem 0.75rem !important;
+  width: 100% !important;
+}
+
+.pf-c-login__main .pf-c-form-control:focus,
+.pf-c-login__main input:focus {
+  outline: none !important;
+  border-color: var(--orc-ring) !important;
+  box-shadow: 0 0 0 2px var(--orc-bg), 0 0 0 4px var(--orc-ring) !important;
+}
+
+.pf-c-login__main .pf-c-button.pf-m-primary,
+.pf-c-login__main button[type="submit"] {
+  font-family: var(--orc-font) !important;
+  font-weight: 500 !important;
+  font-size: 0.875rem !important;
+  background: var(--orc-primary) !important;
+  border: 1px solid transparent !important;
+  border-radius: 9999px !important;
+  color: var(--orc-primary-fg) !important;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
+  width: 100%;
+  min-height: 2.5rem;
+  padding: 0.5rem 1rem !important;
+  margin-top: 0.75rem;
+}
+
+.pf-c-login__main .pf-c-button.pf-m-primary:hover,
+.pf-c-login__main button[type="submit"]:hover {
+  background: hsl(263.4 70% 45%) !important;
+}
+
+.pf-c-login__main .pf-c-helper-text,
+.pf-c-login__main p {
+  color: var(--orc-muted) !important;
+  font-family: var(--orc-font) !important;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.pf-c-login__footer,
+footer.pf-c-login__footer {
+  font-family: var(--orc-font) !important;
+  color: var(--orc-muted) !important;
+  justify-self: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+ak-brand-links::part(list-item) {
+  font-family: "Geist", ui-sans-serif, sans-serif;
+  font-size: 0.75rem;
+  color: hsl(240 5% 64.9%);
+}
+
+.pf-c-page .branding-logo {
+  max-height: 32px;
+  border-radius: 0.5rem;
+}
+
+/* --- Authentik tokens so user/admin UI picks up Orcastra --- */
+html, html[data-theme="dark"], :root {
+  --ak-dark-background: hsl(240 10% 3.9%);
+  --ak-dark-background-light: hsl(240 6% 8%);
+  --ak-dark-background-lighter: hsl(240 3.7% 15.9%);
+  --ak-dark-foreground: hsl(0 0% 98%);
+  --ak-font-family-sans-serif: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --ak-font-family-heading: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --ak-accent: #7c3aed;
+  --pf-v5-global--primary-color--100: #7c3aed;
+  --pf-v5-global--primary-color--200: #6d28d9;
+  --pf-v5-global--link--Color: #a78bfa;
+  --pf-v5-global--link--Color--hover: #c4b5fd;
+  --pf-v5-c-button--m-secondary--after--BorderColor: #7c3aed;
+  --pf-v5-c-button--m-secondary--Color: #c4b5fd;
+}
+
+html, body {
+  font-family: var(--orc-font) !important;
+  color: var(--orc-fg);
+}
+.pf-c-page, .pf-v5-c-page, ak-interface-user {
+  font-family: var(--orc-font) !important;
+  background-color: var(--orc-bg) !important;
+  color: var(--orc-fg);
+}
+
+.pf-c-login,
+.pf-v5-c-login,
+body:has(.pf-c-login) {
+  background-color: #0b0614 !important;
+  background-image: url("https://sso.orcastra.io/branding/bg_orcastra-scaled-1.jpg") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+:root {
+  --ak-global--background-image: url("https://sso.orcastra.io/branding/bg_orcastra-scaled-1.jpg") !important;
+}
+
+
+ak-interface-user,
+.pf-c-page__main,
+.pf-v5-c-page__main,
+.pf-c-page__main-section {
+  background: var(--orc-bg) !important;
+}
+
+/* header / toolbar */
+.pf-c-page__header,
+.pf-v5-c-page__header,
+.pf-c-masthead,
+.pf-v5-c-masthead {
+  background: hsl(240 6% 7%) !important;
+  border-bottom: 1px solid var(--orc-border) !important;
+  box-shadow: none !important;
+}
+
+.pf-c-nav__link.pf-m-current,
+.pf-c-nav__link[aria-current="page"] {
+  color: #fff !important;
+}
+
+a, .pf-c-button.pf-m-link {
+  color: #a78bfa;
+}
+
+/* Login/logout outline buttons only — do not paint the user/admin header */
+.pf-c-login .pf-c-button.pf-m-secondary,
+.pf-c-login .pf-v5-c-button.pf-m-secondary {
+  color: #ddd6fe !important;
+  border-color: hsl(263.4 70% 50.4%) !important;
+  background: transparent !important;
+  border-radius: calc(var(--orc-radius) - 2px) !important;
+  font-family: var(--orc-font) !important;
+}
+
+/* application library cards */
+ak-library,
+ak-library-impl,
+.pf-c-card,
+.pf-v5-c-card {
+  font-family: var(--orc-font) !important;
+}
+
+.pf-c-card,
+.pf-v5-c-card,
+ak-library .pf-c-card {
+  background: hsl(240 6% 8%) !important;
+  border: 1px solid var(--orc-border) !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.25) !important;
+}
+
+.pf-c-card:hover,
+ak-library .pf-c-card:hover {
+  border-color: hsl(263.4 40% 30%) !important;
+  box-shadow: 0 8px 16px -8px rgb(124 58 237 / 0.35) !important;
+}
+
+.pf-c-card__title,
+.pf-c-title,
+h1.pf-c-title {
+  font-family: var(--orc-font) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.025em;
+  color: var(--orc-fg) !important;
+}
+
+/* search */
+.pf-c-search-input,
+.pf-c-form-control,
+.pf-v5-c-text-input {
+  font-family: var(--orc-font) !important;
+  background: var(--orc-input) !important;
+  border: 1px solid var(--orc-border) !important;
+  border-radius: calc(var(--orc-radius) - 2px) !important;
+  color: var(--orc-fg) !important;
+}
+
+.branding-title,
+.pf-c-brand {
+  font-family: var(--orc-font) !important;
+}
+
+/* Custom footer text; hide hardcoded Powered by authentik (always last item) */
+.pf-c-login__footer,
+.pf-v5-c-login__footer,
+footer.pf-c-login__footer,
+ak-brand-links {
+  display: block !important;
+  font-family: var(--orc-font) !important;
+}
+ak-brand-links ul {
+  justify-content: center;
+}
+ak-brand-links li:last-child {
+  display: none !important;
+}
+ak-brand-links a,
+ak-brand-links li {
+  color: #c4b5fd !important;
+  font-size: 0.875rem !important;
+  text-decoration: none !important;
+}
+
+.pf-c-login::after,
+.pf-v5-c-login::after {
+  display: none !important;
+  height: 0 !important;
+}
+
+/* Mobile login: center card, use width, keep nebula, footer bottom-center */
+@media (max-width: 48rem) {
+  .pf-c-login,
+  .pf-v5-c-login {
+    --ak-c-login--MaxWidth: 100%;
+    --ak-c-login--BackgroundColorOverlay: transparent;
+    --ak-c-login__main-ColumnWidth: minmax(0, 1fr);
+    background-attachment: scroll !important;
+    grid-template-columns: minmax(1rem, 1fr) [main] minmax(0, 22rem) minmax(1rem, 1fr) !important;
+    grid-template-rows: [header] auto [main] 1fr [footer] auto !important;
+    padding-block: env(safe-area-inset-top, 0.5rem) env(safe-area-inset-bottom, 0.75rem) !important;
+  }
+
+  .pf-c-login::after,
+  .pf-v5-c-login::after {
+    display: none !important;
+    height: 0 !important;
+  }
+
+  .pf-c-login__main,
+  .pf-v5-c-login__main {
+    max-width: 100% !important;
+    width: 100% !important;
+    align-self: center !important;
+    justify-self: stretch !important;
+    padding: 1.5rem 1.25rem !important;
+    margin: 0 !important;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.4) !important;
+  }
+
+  .pf-c-login__main h1,
+  .pf-c-login__main [data-test-id="card-title"] {
+    font-size: 1.25rem !important;
+    line-height: 1.75rem !important;
+  }
+
+  .branding-logo {
+    max-height: 48px !important;
+    margin-bottom: 0.5rem;
+  }
+
+  .pf-c-login__header,
+  .pf-v5-c-login__header {
+    padding: 0.5rem 0.75rem 0 !important;
+    align-self: start;
+  }
+
+  .pf-c-login__footer,
+  .pf-v5-c-login__footer,
+  footer.pf-c-login__footer {
+    justify-self: center !important;
+    align-self: end !important;
+    text-align: center !important;
+    width: 100% !important;
+    padding: 0.75rem 1rem 1rem !important;
+  }
+
+  ak-brand-links ul {
+    justify-content: center !important;
+    flex-wrap: nowrap !important;
+    gap: 0;
+  }
+
+  ak-brand-links a,
+  ak-brand-links li {
+    white-space: nowrap !important;
+    font-size: 0.8125rem !important;
+  }
+}
+
+/* Authentik 2026.2: kill solid overlay so nebula shows; stacked layout */
+.pf-c-login,
+.pf-v5-c-login,
+.pf-c-login[data-layout],
+.pf-c-login[data-layout="stacked"],
+.pf-c-login[data-layout^="sidebar"],
+.pf-c-login[data-layout^="frame"] {
+  --ak-c-login--BackgroundColorOverlay: transparent !important;
+  --ak-c-login--MaxWidth: 26rem !important;
+  --ak-c-login__main-ColumnWidth: minmax(0, 26rem) !important;
+  --ak-c-login__main--BackgroundColor: hsl(240 10% 6%) !important;
+  --ak-c-login__main--Color: hsl(0 0% 98%) !important;
+}
+.pf-c-login::before,
+.pf-c-login:before,
+.pf-v5-c-login::before {
+  background-color: transparent !important;
+  background-image: none !important;
+  opacity: 0 !important;
+}
+.pf-c-login::after,
+.pf-c-login:after {
+  display: none !important;
+  height: 0 !important;
+  content: none !important;
+}
+.ak-flow-executor, ak-flow-executor, .pf-c-login {
+  min-height: 100dvh;
+}
+.pf-c-login .pf-c-login__main-header img,
+.pf-c-login .branding-logo {
+  max-height: 56px !important;
+  width: auto !important;
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  filter: none !important;
+}
+ak-brand-links li:last-of-type,
+ak-brand-links ul li:last-child,
+.pf-c-login__footer li:last-child {
+  display: none !important;
+}
+.pf-c-login__footer,
+.pf-v5-c-login__footer {
+  justify-self: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+/* 2026.2 PatternFly primary is still default blue; force Orcastra purple */
+:root,
+html,
+.pf-c-login,
+.pf-v5-c-login {
+  --pf-global--primary-color--100: #7c3aed !important;
+  --pf-global--primary-color--200: #6d28d9 !important;
+  --pf-c-button--m-primary--BackgroundColor: #7c3aed !important;
+  --pf-c-button--m-primary--Color: #fff !important;
+  --pf-c-button--m-primary--after--BorderColor: #7c3aed !important;
+  --pf-c-button--m-primary--hover--BackgroundColor: #6d28d9 !important;
+  --pf-c-button--m-primary--focus--BackgroundColor: #6d28d9 !important;
+  --pf-c-button--m-primary--active--BackgroundColor: #6d28d9 !important;
+  --pf-c-button--m-primary--hover--after--BorderColor: #6d28d9 !important;
+  --ak-accent: #7c3aed !important;
+}
+.pf-c-button.pf-m-primary,
+.pf-v5-c-button.pf-m-primary,
+.pf-c-login button[type="submit"],
+button.pf-c-button.pf-m-primary {
+  background-color: #7c3aed !important;
+  background-image: none !important;
+  border-color: #7c3aed !important;
+  color: #fff !important;
+}
+.pf-c-button.pf-m-primary:hover,
+.pf-c-login button[type="submit"]:hover {
+  background-color: #6d28d9 !important;
+  border-color: #6d28d9 !important;
+}
+.pf-c-spinner,
+.pf-c-spinner::before {
+  --pf-c-spinner--Color: #7c3aed;
+  color: #7c3aed !important;
+  border-top-color: #7c3aed !important;
+}
+
+/* Outline purple only inside login/logout cards */
+.pf-c-login .pf-c-button.pf-m-secondary,
+.pf-c-login .pf-v5-c-button.pf-m-secondary {
+  --pf-c-button--after--BorderColor: #7c3aed !important;
+  --pf-c-button--m-secondary--after--BorderColor: #7c3aed !important;
+  --pf-c-button--m-secondary--hover--after--BorderColor: #a78bfa !important;
+  --pf-c-button--m-secondary--Color: #e9d5ff !important;
+  color: #e9d5ff !important;
+  border-color: #7c3aed !important;
+  box-shadow: inset 0 0 0 1px #7c3aed !important;
+}
+.pf-c-login .pf-c-button.pf-m-secondary::after,
+.pf-c-login .pf-c-button.pf-m-secondary::before {
+  border-color: #7c3aed !important;
+  border: var(--pf-c-button--after--BorderWidth, 1px) solid #7c3aed !important;
+}
+
+/* Header/toolbar: no leftover purple boxes */
+.pf-c-page__header .pf-c-button,
+.pf-c-masthead .pf-c-button,
+.pf-v5-c-masthead .pf-c-button,
+.pf-c-toolbar .pf-c-button,
+ak-interface-user .pf-c-page__header .pf-c-button,
+ak-interface-user .pf-c-button.pf-m-plain,
+.pf-c-button.pf-m-plain {
+  box-shadow: none !important;
+  border-color: transparent !important;
+  --pf-c-button--after--BorderColor: transparent !important;
+  --pf-c-button--m-secondary--after--BorderColor: transparent !important;
+  --pf-c-button--after--BorderWidth: 0 !important;
+}
+.pf-c-page__header .pf-c-button::after,
+.pf-c-masthead .pf-c-button::after,
+.pf-c-button.pf-m-plain::after,
+.pf-c-page__header .pf-c-button.pf-m-secondary::after {
+  border: none !important;
+  border-color: transparent !important;
+}
+:root, html, .pf-c-login, .pf-c-page {
+  --pf-global--primary-color--100: #7c3aed !important;
+  --pf-global--primary-color--200: #6d28d9 !important;
+  --pf-global--primary-color--light-100: #a78bfa !important;
+  --pf-global--active-color--100: #7c3aed !important;
+  --pf-global--link--Color: #a78bfa !important;
+  --pf-c-spinner--Color: #7c3aed !important;
+  --pf-c-spinner--m-md--diameter: 3.375rem;
+  --ak-accent: #7c3aed !important;
+}
+.pf-c-spinner,
+.pf-c-spinner.pf-m-md,
+svg.pf-c-spinner,
+.pf-c-progress-spinner,
+ak-loading-overlay,
+.pf-c-login .pf-c-spinner {
+  --pf-c-spinner--Color: #7c3aed !important;
+  color: #7c3aed !important;
+  stroke: #7c3aed !important;
+}
+.pf-c-spinner::before,
+.pf-c-spinner:before {
+  border-color: #7c3aed transparent transparent !important;
+  border-top-color: #7c3aed !important;
+  border-right-color: transparent !important;
+  border-bottom-color: transparent !important;
+  border-left-color: transparent !important;
+}
+/* Authentik empty-state / flow loader */
+.ak-loading,
+.pf-c-empty-state__icon,
+.pf-c-spinner path,
+circle.pf-c-spinner__path {
+  color: #7c3aed !important;
+  stroke: #7c3aed !important;
+}
+
+/* Orcastra capsule (pill) buttons on login/logout cards */
+.pf-c-login {
+  --pf-c-button--BorderRadius: 9999px !important;
+  --pf-c-button--m-primary--BorderRadius: 9999px !important;
+  --orc-btn-radius: 9999px;
+}
+.pf-c-login .pf-c-button,
+.pf-c-login button,
+.pf-c-login .pf-c-button.pf-m-primary,
+.pf-c-login .pf-c-button.pf-m-secondary,
+.pf-c-login .pf-v5-c-button {
+  border-radius: 9999px !important;
+}
+.pf-c-login .pf-c-button::before,
+.pf-c-login .pf-c-button::after,
+.pf-c-login .pf-c-button.pf-m-secondary::after,
+.pf-c-login .pf-c-button.pf-m-primary::after {
+  border-radius: 9999px !important;
+}
+.pf-c-login .pf-c-form-control,
+.pf-c-login input[type="text"],
+.pf-c-login input[type="password"],
+.pf-c-login input[type="email"] {
+  border-radius: 0.625rem !important;
+}
+
+/* PILL v2 — highest specificity, inherit into PF shadow via tokens */
+.pf-c-login,
+.pf-c-login .pf-c-login__main,
+.pf-c-login .pf-c-login__main-body,
+.pf-c-login .pf-c-login__main-footer {
+  --pf-global--BorderRadius--sm: 9999px !important;
+  --pf-global--BorderRadius--md: 9999px !important;
+  --pf-global--BorderRadius--lg: 9999px !important;
+  --pf-c-button--BorderRadius: 9999px !important;
+  --pf-c-button--m-primary--BorderRadius: 9999px !important;
+  --pf-c-button--m-secondary--BorderRadius: 9999px !important;
+  --pf-v5-c-button--BorderRadius: 9999px !important;
+}
+.pf-c-login .pf-c-login__main .pf-c-button,
+.pf-c-login .pf-c-login__main-footer .pf-c-button,
+.pf-c-login .pf-c-login__main-body .pf-c-button,
+.pf-c-login .pf-c-button.pf-m-primary,
+.pf-c-login .pf-c-button.pf-m-secondary,
+.pf-c-login button.pf-c-button,
+.pf-c-login .pf-v5-c-button {
+  border-radius: 9999px !important;
+  overflow: hidden !important;
+}
+.pf-c-login .pf-c-button::before,
+.pf-c-login .pf-c-button::after,
+.pf-c-login .pf-c-login__main .pf-c-button::after,
+.pf-c-login .pf-c-login__main .pf-c-button.pf-m-secondary::after,
+.pf-c-login .pf-c-login__main .pf-c-button.pf-m-primary::after {
+  border-radius: 9999px !important;
+}
+
+/* User/admin sidebar: capsule items like Orcastra */
+.pf-c-page__sidebar .pf-c-nav,
+ak-interface-user .pf-c-nav,
+.pf-c-nav.pf-m-end,
+.pf-c-nav[aria-label] {
+  --pf-c-nav__link--PaddingLeft: 0.875rem;
+  --pf-c-nav__link--PaddingRight: 0.875rem;
+  --pf-c-nav__link--before--BorderColor: transparent !important;
+  --pf-c-nav__link--hover--after--BorderColor: transparent !important;
+  --pf-c-nav__link--m-current--after--BorderColor: transparent !important;
+  --pf-c-nav__link--after--BorderColor: transparent !important;
+}
+.pf-c-page__sidebar .pf-c-nav__link,
+ak-interface-user .pf-c-nav__link,
+.pf-c-nav__list .pf-c-nav__link {
+  border-radius: 9999px !important;
+  margin: 0.15rem 0.5rem !important;
+  padding: 0.5rem 0.875rem !important;
+  color: hsl(240 5% 84%) !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.pf-c-page__sidebar .pf-c-nav__link::before,
+.pf-c-page__sidebar .pf-c-nav__link::after,
+ak-interface-user .pf-c-nav__link::before,
+ak-interface-user .pf-c-nav__link::after,
+.pf-c-nav__list .pf-c-nav__link::before,
+.pf-c-nav__list .pf-c-nav__link::after {
+  display: none !important;
+  border: none !important;
+  background: none !important;
+  width: 0 !important;
+}
+.pf-c-page__sidebar .pf-c-nav__link:hover,
+ak-interface-user .pf-c-nav__link:hover,
+.pf-c-nav__list .pf-c-nav__link:hover {
+  background: hsl(240 5% 14%) !important;
+  color: #fff !important;
+}
+.pf-c-page__sidebar .pf-c-nav__link.pf-m-current,
+.pf-c-page__sidebar .pf-c-nav__link[aria-current="page"],
+ak-interface-user .pf-c-nav__link.pf-m-current,
+ak-interface-user .pf-c-nav__link[aria-current="page"],
+.pf-c-nav__list .pf-c-nav__link.pf-m-current,
+.pf-c-nav__list .pf-c-nav__link[aria-current="page"] {
+  background: hsl(263.4 70% 50.4%) !important;
+  color: #fff !important;
+  font-weight: 500 !important;
+}
+.pf-c-page__sidebar .pf-c-nav__separator,
+.pf-c-nav__separator,
+.pf-c-page__sidebar hr {
+  display: none !important;
+}
+.pf-c-page__sidebar .pf-c-nav__item + .pf-c-nav__item {
+  border-top: none !important;
+}
+.pf-c-page__sidebar {
+  background: hsl(240 6% 7%) !important;
+  border-right: 1px solid hsl(240 3.7% 15.9%) !important;
+}
